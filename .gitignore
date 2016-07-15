@@ -1,0 +1,5 @@
+.lein*
+.nrepl*
+figwheel_server.log
+resources
+target
