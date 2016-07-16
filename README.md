@@ -12,7 +12,7 @@ Install [Leiningen](http://leiningen.org/). From here, you have several options 
 
 #### Summary
 
-With this setup, Emacs runs Clojure and ClojureScript REPLs which are fully integrated with CIDER and can access the state of the application while it is running. Emacs also runs Figwheel, which will hot-load any ClojureScript code changes into the browser without reloading the page.
+With this setup, Emacs runs Clojure and ClojureScript REPLs which are fully integrated with CIDER and can access the state of the application while it is running. Emacs also runs Figwheel, which will hot-load any ClojureScript code changes into the browser without reloading the page. Because both REPLs run on the same nREPL port, you also get automatic loading of Clojure code into the Clojure REPL without having to press `C-c C-k`.
 
 #### Setup
 
@@ -87,7 +87,7 @@ as this appears even if you have `figwheel-sidecar` correctly configured.
 - Open `src/minimal_webapp/pages/splash.cljs`, replace the text `"Hello from Reagent!"` with `"Goodbye from Reagent!"`, and save the file. You should see the text in your browser change without needing to reload the page.
 - Open `src/minimal_webapp/server.clj`, replace the text `"Minimal Webapp"` with `"Maximal Webapp"`, and save the file. After reloading the page in your browser, you should see the title of the page change.
 - Open `src/minimal_webapp/pages/splash.cljs` and press `C-c M-n`. You should see the prompt in the ClojureScript REPL change from `cljs.user>` to `minimal-webapp.pages.splash>`. Now add `(def cljs-message "ClojureScript Message")` just after the namespace declaration, save the file, wait a second or two, and enter `cljs-message` at the ClojureScript REPL. You should get `"ClojureScript Message"` as output.
-- Open `src/minimal_webapp/server.clj` and press `C-c M-n`. You should see the prompt in the Clojure REPL change from `user>` to `minimal-webapp.server>`. Now add `(def clj-message "Clojure Message")` just after the namespace declaration, save the file, press `C-c C-k`, and enter `clj-message` at the Clojure REPL. You should get `"Clojure Message"` as output.
+- Open `src/minimal_webapp/server.clj` and press `C-c M-n`. You should see the prompt in the Clojure REPL change from `user>` to `minimal-webapp.server>`. Now add `(def clj-message "Clojure Message")` just after the namespace declaration, save the file, and enter `clj-message` at the Clojure REPL. You should get `"Clojure Message"` as output.
 
 #### Shutting down
 
