@@ -15,10 +15,10 @@
 
                  ;; Emacs integration
                  [com.cemerick/piggieback "0.2.1"]
-                 [figwheel-sidecar "0.5.2"]]
+                 [figwheel-sidecar "0.5.4-7"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
-            [lein-figwheel "0.5.0-1"]]
+            [lein-figwheel "0.5.4-7"]]
 
   :cljsbuild {:builds [{:id "main"
                         :source-paths ["src"]
@@ -27,10 +27,9 @@
                                    :output-to "resources/public/js/main.js"
                                    :output-dir "resources/public/js/out"
                                    :asset-path "js/out"}}]}
-  :figwheel {:ring-handler minimal-webapp.server/site
-             :http-server-root "public"}
+  :figwheel {:ring-handler minimal-webapp.server/site}
 
-  :clean-targets ^{:protect false} ["resources" "target"]
+  :clean-targets ^{:protect false} ["resources/public" "target"]
 
   :uberjar-name "minimal-webapp-standalone.jar"
   :profiles {:uberjar {:aot :all

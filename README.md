@@ -21,7 +21,7 @@ If you have CIDER installed, you can use Figwheel from within Emacs. First, pres
 In Emacs, you should see two REPLs open. The Clojure REPL should have output similar to the following:
 
 ```
-;; Connected to nREPL server - nrepl://localhost:50605
+;; Connected to nREPL server - nrepl://localhost:55600
 ;; CIDER 0.13.0snapshot (package: 20160629.946), nREPL 0.2.12
 ;; Clojure 1.8.0, Java 1.8.0_31
 ;;     Docs: (doc function-name)
@@ -30,13 +30,13 @@ In Emacs, you should see two REPLs open. The Clojure REPL should have output sim
 ;;  Javadoc: (javadoc java-object-or-class)
 ;;     Exit: <C-c C-q>
 ;;  Results: Stored in vars *1, *2, *3, an exception in *e;
-user> 
+user>
 ```
 
 The ClojureScript REPL should have output similar to the following:
 
 ```
-;; Connected to nREPL server - nrepl://localhost:50605
+;; Connected to nREPL server - nrepl://localhost:55600
 ;; CIDER 0.13.0snapshot (package: 20160629.946), nREPL 0.2.12
 ;; Clojure 1.8.0, Java 1.8.0_31
 ;;     Docs: (doc function-name)
@@ -45,10 +45,11 @@ The ClojureScript REPL should have output similar to the following:
 ;;  Javadoc: (javadoc java-object-or-class)
 ;;     Exit: <C-c C-q>
 ;;  Results: Stored in vars *1, *2, *3, an exception in *e;
-user> Figwheel: Starting server at http://localhost:3449
+user> Figwheel: Starting server at http://0.0.0.0:3449
 Figwheel: Watching build - main
+Figwheel: Cleaning build - main
 Compiling "resources/public/js/main.js" from ["src"]...
-Successfully compiled "resources/public/js/main.js" in 7.967 seconds.
+Successfully compiled "resources/public/js/main.js" in 9.432 seconds.
 Launching ClojureScript REPL for build: main
 Figwheel Controls:
           (stop-autobuild)                ;; stops Figwheel autobuilder
@@ -68,7 +69,7 @@ Figwheel Controls:
 Prompt will show when Figwheel connects to your application
 To quit, type: :cljs/quit
 nil
-cljs.user> 
+cljs.user>
 ```
 
 You should not be concerned by the message
@@ -122,7 +123,7 @@ In the second, do the following and navigate to [localhost:3449](http://localhos
 
 ```
 $ lein repl
-nREPL server started on port 50794 on host 127.0.0.1 - nrepl://127.0.0.1:50794
+nREPL server started on port 55670 on host 127.0.0.1 - nrepl://127.0.0.1:55670
 REPL-y 0.3.7, nREPL 0.2.12
 Clojure 1.8.0
 Java HotSpot(TM) 64-Bit Server VM 1.8.0_31-b13
@@ -136,11 +137,12 @@ Java HotSpot(TM) 64-Bit Server VM 1.8.0_31-b13
 user=> (use 'figwheel-sidecar.repl-api)
 nil
 user=> (start-figwheel!)
-2016-07-15 18:14:47.597:INFO::nREPL-worker-0: Logging initialized @35720ms
-Figwheel: Starting server at http://localhost:3449
+2016-07-16 15:30:22.045:INFO::nREPL-worker-0: Logging initialized @19097ms
+Figwheel: Starting server at http://0.0.0.0:3449
 Figwheel: Watching build - main
+Figwheel: Cleaning build - main
 Compiling "resources/public/js/main.js" from ["src"]...
-Successfully compiled "resources/public/js/main.js" in 7.708 seconds.
+Successfully compiled "resources/public/js/main.js" in 9.923 seconds.
 nil
 user=> (cljs-repl)
 Launching ClojureScript REPL for build: main
@@ -209,11 +211,16 @@ user=>
 In the second, run `rlwrap lein figwheel`, and navigate to [localhost:3449](http://localhost:3449/) in your browser. You should receive output similar to the following in your terminal:
 
 ```
-2016-07-15 18:03:25.125:INFO::main: Logging initialized @7958ms
-Figwheel: Starting server at http://localhost:3449
+Figwheel: Cleaning because dependencies changed
+Figwheel: Cutting some fruit, just a sec ...
+Figwheel: Validating the configuration found in project.clj
+Figwheel: Configuration Valid :)
+2016-07-16 15:31:22.782:INFO::main: Logging initialized @8535ms
+Figwheel: Starting server at http://0.0.0.0:3449
 Figwheel: Watching build - main
+Figwheel: Cleaning build - main
 Compiling "resources/public/js/main.js" from ["src"]...
-Successfully compiled "resources/public/js/main.js" in 7.035 seconds.
+Successfully compiled "resources/public/js/main.js" in 8.638 seconds.
 Launching ClojureScript REPL for build: main
 Figwheel Controls:
           (stop-autobuild)                ;; stops Figwheel autobuilder
@@ -439,14 +446,14 @@ Reagent is a ClojureScript wrapper around React, a JavaScript library for buildi
 Piggieback is middleware that allows the use of a ClojureScript REPL via nREPL, which allows Emacs to integrate with a ClojureScript REPL the same way it integrates with a Clojure REPL.
 
 ```
-                 [figwheel-sidecar "0.5.2"]]
+                 [figwheel-sidecar "0.5.4-7"]]
 ```
 
 Figwheel Sidecar provides functions that can be used to start a ClojureScript REPL from Clojure code instead of from the command line. These functions are what Emacs uses to start an integrated ClojureScript REPL.
 
 ```
   :plugins [[lein-cljsbuild "1.1.3"]
-            [lein-figwheel "0.5.0-1"]]
+            [lein-figwheel "0.5.4-7"]]
 ```
 
 The `lein-cljsbuild` and `lein-figwheel` plugins simply provide the `cljsbuild` and `figwheel` Leiningen tasks.
@@ -495,22 +502,18 @@ This is the directory where additional JavaScript files, such as the ClojureScri
 This is the relative URL used for references to other generated JavaScript from `main.js`. It is relative to the root of the HTTP server, which is `resources/public`.
 
 ```
-  :figwheel {:ring-handler minimal-webapp.server/site
+  :figwheel {:ring-handler minimal-webapp.server/site}
 ```
 
 This tells Figwheel's web server where to get its Ring routing logic.
 
 ```
-             :http-server-root "public"}
+  :clean-targets ^{:protect false} ["resources/public" "target"]
 ```
 
-All of the web servers that are used to run this application serve files from the `resources/public` directory by default except for Figwheel started from a Clojure REPL (from the command line is fine). So a path (relative to the `resources` directory) has to be specified manually in order for Emacs integration to work correctly.
+This allows `lein clean` to delete the `resources/public` directory in addition to the `target` directory. The `:protect` metadata suppresses the error which would ordinarily be raised on adding anything other than `target` to `:clean-targets`.
 
-```
-  :clean-targets ^{:protect false} ["resources" "target"]
-```
-
-This allows `lein clean` to delete the `resources` directory in addition to the `target` directory. The `:protect` metadata suppresses the error which would ordinarily be raised on adding anything other than `target` to `:clean-targets`.
+Note that when Figwheel is run using Figwheel Sidecar (i.e. from a Clojure REPL) rather than from the command line, it will be able to serve files from `resources/` unless the directory exists when Figwheel is started. Therefore, the actual `resources/` directory is not deleted by `lein clean`.
 
 ```
   :uberjar-name "minimal-webapp-standalone.jar"

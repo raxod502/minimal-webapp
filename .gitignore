@@ -2,5 +2,5 @@
 .lein-repl-history
 .nrepl-port
 figwheel_server.log
-resources
+resources/public
 target
