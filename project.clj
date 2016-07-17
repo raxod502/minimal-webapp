@@ -1,5 +1,8 @@
 (defproject minimal-webapp "0.1.0-SNAPSHOT"
   :description "Minimal webapp using ClojureScript, Compojure, and Reagent"
+  :url "https://github.com/raxod502/minimal-webapp"
+  :license {:name "MIT License"
+            :url "http://www.opensource.org/licenses/mit-license.php"}
 
   :dependencies [;; Language
                  [org.clojure/clojure "1.8.0"]
