@@ -1,0 +1,11 @@
+usage: phantomjs autotest.js actions...
+
+action: [on error] action
+        run command <command>
+        launch <process_name> with command <command>
+        send input <input> to <process_name>
+        on port <port>
+        at [root path | path <path>]
+        (reload | wait) until text <text> observed with timeout of <seconds> seconds
+        wait until alert observed with timeout of <seconds> seconds
+        wait until text <text> observed in file <filename> with timeout of <seconds> seconds

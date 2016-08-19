@@ -1,0 +1,1 @@
+trap "echo FAILED" EXIT
