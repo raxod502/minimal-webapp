@@ -1,4 +1,15 @@
-# minimal-webapp
+## Deprecated
+
+minimal-webapp has been deprecated, because:
+
+* I haven't used Clojure(Script) in years
+* The ecosystem moves so far that almost certainly all of this is
+  obsolete by now
+* It was kind of a big pile of hacks to begin with
+
+I can't say I recommend ClojureScript, by the way. The tooling and
+ecosystem bear a bit too strong a resemblance to a Jenga tower for my
+comfort.
 
 ## Summary
 
